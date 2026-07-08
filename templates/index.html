@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CrediSense AI — Advanced credit risk assessment engine powered by machine learning for instant risk profiling and predictive scoring.">
+    <title>CrediSense AI | Automated Credit Risk Engine</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+
+    <!-- ======= HEADER & NAVBAR ======= -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="brand-logo">
+                <span class="logo-icon">⚡</span>
+                <div class="logo-text">
+                    <span class="brand-name">CrediSense <span class="accent-text">AI</span></span>
+                    <span class="brand-tagline">Credit Risk Assessment Engine</span>
+                </div>
+            </a>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                    <span class="theme-icon-light">☀️</span>
+                    <span class="theme-icon-dark">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-wrapper">
+        <!-- ======= TOP SYSTEM METRICS ======= -->
+        <section class="system-metrics-section">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Engine Status</span>
+                        <div class="metric-value">Active <span class="status-indicator online"></span></div>
+                    </div>
+                    <div class="metric-icon-box status-bg">⚡</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Model Accuracy</span>
+                        <div class="metric-value">91.20%</div>
+                    </div>
+                    <div class="metric-icon-box accuracy-bg">🎯</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Data Rebalancing</span>
+                        <div class="metric-value">SMOTE Pipeline</div>
+                    </div>
+                    <div class="metric-icon-box security-bg">🛡️</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Inference Latency</span>
+                        <div class="metric-value">&lt; 15ms</div>
+                    </div>
+                    <div class="metric-icon-box latency-bg">⏳</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= MAIN DASHBOARD WORKSPACE ======= -->
+        <section class="workspace-grid">
+            
+            <!-- LEFT COLUMN: ASSESSMENT INPUT -->
+            <div class="workspace-panel input-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Risk Assessment Console</h2>
+                    <p class="panel-subtitle">Provide applicant parameters to compute real-time credit score</p>
+                </div>
+                <form id="credit-form" class="assessment-form">
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">👤 Identity Context</h3>
+                        <div class="form-group">
+                            <label for="full_name">Full Legal Name</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="full_name" name="full_name" value="Muhammad Shahbaz" required placeholder="e.g. Muhammad Shahbaz">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Applicant Age</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🎂</span>
+                                <input type="number" id="age" name="age" value="25" min="18" max="100" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">💸 Financial Parameters</h3>
+                        <div class="form-group">
+                            <label for="amount">Requested Credit Amount (USD)</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">$</span>
+                                <input type="number" id="amount" name="amount" value="5000" step="500" min="500" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group slider-group">
+                            <div class="slider-header">
+                                <label for="duration">Loan Term Duration</label>
+                                <span id="duration-value" class="slider-badge">24 months</span>
+                            </div>
+                            <input type="range" id="duration" name="duration" min="6" max="72" value="24" class="custom-range">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">🏠 Background & Intent</h3>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="housing">Housing Status</label>
+                                <div class="select-wrapper">
+                                    <select id="housing" name="housing">
+                                        <option value="Own" selected>Own Housing</option>
+                                        <option value="Rent">Rented</option>
+                                        <option value="Free">Free Housing</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="purpose">Loan Purpose</label>
+                                <div class="select-wrapper">
+                                    <select id="purpose" name="purpose">
+                                        <option value="Car" selected>Automobile</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Business">Business Venture</option>
+                                        <option value="Home Repairs">Home Repairs</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="submit-btn">
+                        <span class="btn-text">🔍 Run Risk Analysis</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: DECISION CONSOLE -->
+            <div class="workspace-panel result-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Decision Console</h2>
+                    <p class="panel-subtitle">Real-time risk rating and confidence metrics</p>
+                </div>
+                
+                <div class="result-container" id="result-container">
+                    <!-- Default Screen: Awaiting Action -->
+                    <div class="awaiting-state">
+                        <div class="awaiting-graphic">
+                            <svg viewBox="0 0 100 100" class="awaiting-svg">
+                                <circle cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="70" class="pulsing-circle"></circle>
+                                <path d="M35,50 L45,60 L65,40" stroke-width="6" stroke-linecap="round" fill="none" class="check-path"></path>
+                            </svg>
+                        </div>
+                        <h3>Ready for Evaluation</h3>
+                        <p>Configure the applicant parameters on the left and trigger risk analysis to process the credit decision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= SECTION: EXPLAINABLE AI & ANALYTICS ======= -->
+        <section class="analytics-section">
+            <div class="section-header">
+                <h2 class="section-title">📊 Explainable AI & Performance Analytics</h2>
+                <p class="section-subtitle">Deep dive into model confidence levels, correlation drivers, and classification metrics</p>
+            </div>
+
+            <div class="analytics-layout-grid">
+                
+                <!-- Performance metrics bars -->
+                <div class="glass-card metric-breakdown-card">
+                    <h3>📈 Classifier Performance Metrics</h3>
+                    <p class="card-desc">Evaluations compiled during stratified validation testing.</p>
+                    <div class="bar-chart-container">
+                        <div class="metric-bar-group">
+                            <div class="bar-info">
+                                <span class="bar-label">Overall Accuracy</span>
+                                <span class="bar-percentage">91.20%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 91.20%"></div></div>
+                        </div>
+                        <div class="metric-bar-group">
+                            <div class="bar-info">
+                                <span class="bar-label">Weighted Precision</span>
+                                <span class="bar-percentage">88.45%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 88.45%"></div></div>
+                        </div>
+                        <div class="metric-bar-group">
+                            <div class="bar-info">
+                                <span class="bar-label">Weighted Recall</span>
+                                <span class="bar-percentage">87.90%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 87.90%"></div></div>
+                        </div>
+                        <div class="metric-bar-group">
+                            <div class="bar-info">
+                                <span class="bar-label">F1-Score (Risk Baseline)</span>
+                                <span class="bar-percentage">88.15%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 88.15%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confusion Matrix Card -->
+                <div class="glass-card confusion-matrix-card">
+                    <h3>🧮 Confusion Matrix</h3>
+                    <p class="card-desc">Performance matrix mapping actual vs predicted test labels.</p>
+                    <div class="matrix-table-wrapper">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Predicted Good</th>
+                                    <th>Predicted Bad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="row-header">Actual Good</th>
+                                    <td class="cell-highlight tp-cell">166 <span class="cell-label">True Good</span></td>
+                                    <td class="cell-normal fp-cell">9 <span class="cell-label">False Bad</span></td>
+                                </tr>
+                                <tr>
+                                    <th class="row-header">Actual Bad</th>
+                                    <td class="cell-normal fn-cell">13 <span class="cell-label">False Good</span></td>
+                                    <td class="cell-highlight tn-cell">62 <span class="cell-label">True Bad</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Risk Drivers / Feature Importance Card -->
+            <div class="glass-card feature-importance-card">
+                <h3>🔬 Relative Feature Impact (Predictive Weights)</h3>
+                <p class="card-desc">Top variables steering the Gradient Boosting Decision Engine outputs.</p>
+                
+                <div class="features-flex-grid">
+                    <div class="feature-bar-row">
+                        <span class="feat-name">credit_amount</span>
+                        <div class="feat-track"><div class="feat-fill" style="width: 100%"><span class="feat-val">0.28</span></div></div>
+                    </div>
+                    <div class="feature-bar-row">
+                        <span class="feat-name">month_duration</span>
+                        <div class="feat-track"><div class="feat-fill" style="width: 82%"><span class="feat-val">0.23</span></div></div>
+                    </div>
+                    <div class="feature-bar-row">
+                        <span class="feat-name">age</span>
+                        <div class="feat-track"><div class="feat-fill" style="width: 50%"><span class="feat-val">0.14</span></div></div>
+                    </div>
+                    <div class="feature-bar-row">
+                        <span class="feat-name">no_checking_status</span>
+                        <div class="feat-track"><div class="feat-fill" style="width: 36%"><span class="feat-val">0.10</span></div></div>
+                    </div>
+                    <div class="feature-bar-row">
+                        <span class="feat-name">no_savings_status</span>
+                        <div class="feat-track"><div class="feat-fill" style="width: 25%"><span class="feat-val">0.07</span></div></div>
+                    </div>
+                    <div class="feature-bar-row">
+                        <span class="feat-name">employment_&lt;_1yr</span>
+                        <div class="feat-track"><div class="feat-fill" style="width: 18%"><span class="feat-val">0.05</span></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= SECTION: PROFESSIONAL PROFILE ======= -->
+        <section class="profile-section">
+            <div class="profile-card">
+                <div class="profile-header-accent"></div>
+                <div class="profile-body">
+                    <div class="profile-avatar">MS</div>
+                    <h2 class="profile-name">Muhammad Shahbaz</h2>
+                    <p class="profile-role">Lead Machine Learning & Cloud Architect</p>
+                    
+                    <div class="profile-details-grid">
+                        <div class="profile-detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <div>
+                                <span class="detail-label">Project Domain</span>
+                                <span class="detail-value">AI-Driven Automated Risk Scoring</span>
+                            </div>
+                        </div>
+                        <div class="profile-detail-item">
+                            <span class="detail-icon">✉️</span>
+                            <div>
+                                <span class="detail-label">Email Address</span>
+                                <a href="mailto:shahbaz04462@gmail.com" class="detail-value link-accent">shahbaz04462@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="profile-detail-item">
+                            <span class="detail-icon">📱</span>
+                            <div>
+                                <span class="detail-label">Direct Line</span>
+                                <a href="tel:+923058804309" class="detail-value link-accent">0305-8804309</a>
+                            </div>
+                        </div>
+                        <div class="profile-detail-item">
+                            <span class="detail-icon">💻</span>
+                            <div>
+                                <span class="detail-label">Platform Stack</span>
+                                <span class="detail-value">Flask / Vercel Serverless / Git</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 CrediSense AI. Built by <strong>Muhammad Shahbaz</strong>. CodeAlpha ML Internship Program.</p>
+            <p class="footer-note">Decisions generated by this system are simulated assessments based on statistical scoring algorithms.</p>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
